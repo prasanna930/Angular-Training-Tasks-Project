@@ -1,0 +1,15 @@
+<form [formGroup] = "dynamicform">
+<div formArrayName="items" *ngFor="let item of items.controls; let i=index">
+    <div [formGroupName]="i" >
+        {{i+1}}
+        <p-checkbox name="group1" value="Telugu" label="Telugu" formControlName="isChecked" inputId="te"></p-checkbox>
+    </div>
+    <!-- <div *ngIf="isChecked.invalid && (isChecked.dirty || isChecked.touched)"
+          class="alert alert-danger">
+        <div *ngIf="isChecked.errors.required">
+            Checkbox is required.
+        </div>
+    </div> -->
+</div>
+</form>
+<button type="button" (click)="addItem()">Add Item</button>

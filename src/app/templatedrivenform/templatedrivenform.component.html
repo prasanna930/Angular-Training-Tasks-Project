@@ -1,0 +1,195 @@
+<div style="padding:20px;">
+    <form #myform="ngForm" [appCrossfieldvalidation]="['password',confirmpassword]">
+
+        <div>
+            <h3>Firstname:</h3>
+            <input type="text" [(ngModel)]="firstname" name="firstname" required="required" minlength="3" maxlength="25"
+                pattern="^[a-zA-Z]*$" #control1="ngModel" size="30" pInputText placeholder="Enter your Firstname">
+            <span class="error" *ngIf=control1.touched&&control1.invalid&&control1.errors.required>Firstname can't be
+                blank</span>
+            <span class="error" *ngIf=control1.touched&&control1.invalid&&control1.errors.minlength>minimum 3 characters
+            </span>
+            <span class="error" *ngIf=control1.touched&&control1.invalid&&control1.errors.pattern>only allowed
+                alphabets</span>
+        </div>
+
+        <h3>Lastname:</h3>
+        <div class="ui-g-12 ui-md-3">
+            <input type="text" [(ngModel)]="lastname" name="lastname" size="30" pInputText pTooltip="Enter your Lastname"
+                tooltipPosition="bottom" placeholder="Lastname">
+        </div>
+        <br>
+        <br>
+
+        <h3>Date Of Birth:</h3>
+        <div class="ui-g-12 ui-md-6 ui-lg-4">
+            <p-inputMask mask="99/99/9999" [(ngModel)]="dateofbirth" size="30" name="dateofbirth" placeholder="mm/dd/yyyy"
+                slotChar="mm/dd/yyyy">
+            </p-inputMask>
+        </div>
+        <br>
+        <br>
+
+        <h3>Details:</h3>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" [(ngModel)]="username" name="username" pInputText placeholder="Username">
+
+                </div>
+            </div>
+
+            <div class="ui-g-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" [(ngModel)]="password" name="password" #Password1="ngModel" required="required"
+                        minlength="6" pInputText placeholder="Password">
+                    <span class="error" *ngIf=Password1.touched&&Password1.invalid&&Password1.errors.required>Password is required</span>
+                    <span class="error" *ngIf=Password1.touched&&Password1.invalid&&Password1.errors.minlength>password minimum 6 characters</span>
+                </div>
+            </div>
+
+            <div class="ui-g-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" [(ngModel)]="confirmpassword" name="confirmpassword" #confirmpassword1="ngModel"
+                        required="required" minlength="6" pInputText placeholder="confirmpassword">
+                        <span class="error" *ngIf=confirmpassword1.touched&&confirmpassword1.invalid&&confirmpassword1.errors.required>confirmpassword is required</span>
+                        <span class="error" *ngIf=confirmpassword1.touched&&confirmpassword1.invalid&&confirmpassword1.errors.minlength>password should match with confirmpassword</span>
+                </div>
+            </div>
+
+            <div class="ui-g-3">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" [(ngModel)]="email" name="email"  
+                        pInputText placeholder="Email">
+                </div>
+            </div>
+        </div>
+
+        <h3 class="first">Gender</h3>
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+            <div class="ui-g-12">
+                <p-radioButton name="group1" [(ngModel)]="gender" name="gender" value="Female" label="Female"
+                    inputId="Female">
+                </p-radioButton>
+            </div>
+            <div class="ui-g-12">
+                <p-radioButton name="group1" [(ngModel)]="gender" name="gender" value="Male" label="Male"
+                    inputId="Male">
+                </p-radioButton>
+            </div>
+        </div>
+        <div class="ui-g-12">
+        <h3>State</h3>
+        <p-dropdown [options]="states" [(ngModel)]="State" name="State" size="30" editable="true" placeholder="Select a State">
+        </p-dropdown>
+        </div>
+
+     <div class="ui-g-12">
+            <h3>Skills</h3>
+            <p-autoComplete [suggestions]="filteredSkillsMultiple" (completeMethod)="filterSkillsMultiple($event)"
+                styleClass="wid100" [minLength]="1" name="Skills"  placeholder="Skills" field="name" [multiple]="true">
+            </p-autoComplete>
+        <!-- <ul>
+            <li *ngFor="let c of countries">{{c.name}}</li>
+        </ul> -->
+    </div>
+        <h3 class="first">Languages Known:</h3>
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+            <div class="ui-g-12">
+                <p-checkbox name="group1" value="Telugu" label="Telugu" [(ngModel)]="languages" name="languages"
+                    inputId="te">
+                </p-checkbox>
+            </div>
+            <div class="ui-g-12">
+                <p-checkbox name="group1" value="English" label="English" [(ngModel)]="languages" name="languages"
+                    inputId="en">
+                </p-checkbox>
+            </div>
+            <div class="ui-g-12">
+                <p-checkbox name="group1" value="Hindi" label="Hindi" [(ngModel)]="languages" name="languages"
+                    inputId="hi">
+                </p-checkbox>
+            </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-4">
+            <h3>Calender:</h3>
+            <p-calendar [(ngModel)]="Calender" name="Calender" [showIcon]="true"></p-calendar>
+        </div>
+        <br><br>
+        <br>
+        <br>
+        <br>
+
+        <h3>Address:</h3>
+        <textarea rows="5" cols="30" [(ngModel)]="address" name="address" pInputTextarea
+            autoResize="autoResize"></textarea>
+
+        <h3 class="first">Contact Numbers:</h3>
+        <p-chips [(ngModel)]="contactNumbers" name="contactNumbers"></p-chips>
+
+
+        <!-- <h3 class="first">Company Rating {{val1}}</h3> -->
+        <!-- <p-rating [(ngModel)]="comrat" name="comrat"></p-rating> -->
+        <br>
+        <button pButton type="button" label="Add" (click)="add(myform)"></button>&nbsp;
+        <button pButton type="button" label="reset" (click)="reset(myform)"></button>&nbsp;
+        <button pButton type="button" label="addTable" (click)='addTable(myform)'></button>
+    </form>
+</div>
+<div>
+    <p *ngIf="showJsonData">{{ myform.value | json }}</p>
+</div>
+
+<app-child [data]="myform.value"></app-child>
+
+<h3 class="first">Table</h3>
+<p-table [value]="fields">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>DateOfBirth</th>
+            <th>username</th>
+            <th>password</th>
+            <th>confirmpassword</th>
+            <th>email</th>
+            <th>Gender</th>
+            <th>State</th>
+            <th>Skills</th>
+            <th>Languages Known</th>
+            <th>Calender</th>
+            <th>Address</th>
+            <th>contactNumbers</th>
+            <th>CompRating</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-field>
+        <tr>
+            <td>{{field.Firstname}}</td>
+            <td>{{field.Lastname}}</td>
+            <td>{{field.dateofbirth}}</td>
+            <td>{{field.Username}}</td>
+            <td>{{field.password}}</td>
+            <td>{{field.confirmpassword}}</td>
+            <td>{{field.email}}</td>
+            <td>{{field.Gender}}</td>
+            <td>{{field.State}}</td>
+            <td>
+                <span *ngFor="let Skill of field.Skills">{{Skill.name}} </span>
+            </td>
+            <td>{{field.languages}}</td>
+            <td>{{field.Calender}}</td>
+            <td>{{field.address}}</td>
+            <td>{{field.contactNumbers}}</td>
+            <td>{{field.comrat}}</td>
+
+        </tr>
+    </ng-template>
+</p-table>
+

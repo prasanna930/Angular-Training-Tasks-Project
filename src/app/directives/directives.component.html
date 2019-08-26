@@ -1,0 +1,42 @@
+<h1>ngstyle example</h1>
+<div [ngStyle]="{'color': color, 'font-size':size + 'px'}">style using ngStyle</div>
+<input [(ngModel)]="color" /><br><br>
+<button (click)="size=size+1">+</button>&nbsp;
+<button (click)="size=size-1">-</button>
+
+<h1>My First Attribute Directive</h1>
+
+<h4>Pick a highlight color</h4>
+<div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<p [appHighlight]="color">Highlight me!</p>
+
+<p [appHighlight]="color" defaultColor="violet">
+    Highlight me too!
+</p>
+
+<h3 class="first">NgIf</h3>
+<p-toggleButton onLabel="On" offLabel="off" onIcon="pipi-check" offIcon="pi pi-times" (click)="toggle()"
+    onIcon="fa-toggle-on" offIcon="fa-toggle-off"></p-toggleButton>
+
+<br><br>
+<div *ngIf="On">
+    <p-dropdown [options]="cities2" [disabled]="!On" optionLabel="name"></p-dropdown>
+</div>
+<div *ngIf="!On"></div>
+
+<h2>ngfor</h2>
+<div *ngFor="let student of students">{{student.id}} {{student.name}} {{student.branch}} {{student.gender}}</div>
+<br><br>
+<h2>ngSwitch</h2>
+<div [ngSwitch]="color">
+<div *ngSwitchCase="'red'">you picked red color</div>
+<div *ngSwitchCase="'green'">you picked green color</div>
+<div *ngSwitchCase="'yellow'">you picked yellow color</div>
+<div *ngSwitchDefault>pick any color</div>
+<br>
+
+<p-dropdown [options]="countries" *appCustomdirective="false" optionLabel="country"></p-dropdown>

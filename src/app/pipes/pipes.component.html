@@ -1,0 +1,55 @@
+<div class=ui-g>
+    <div class=ui-g-4>
+<p-accordion>
+        <p-accordionTab header="Built in Pipes" [selected]="true">
+<h3>{{name}}</h3>
+<h3>uppercase:</h3>
+<p>{{ name | uppercase }}</p>
+<h3>lowecase:</h3>
+<p>{{ name | lowercase }}</p>
+<h3>titleformat:</h3>
+<p>{{ message | titlecase }}</p>
+<h3>slice format:</h3>
+<p>{{ name | slice:2:5 }}</p>
+<h3>json format:</h3>
+<p>{{ studentdata | json }}</p>
+<h3>percent format:</h3>
+<p>{{ 0.50 | percent }}</p>
+<h3>currency format:</h3>
+<p>{{ 0.25 | currency }}</p>
+<p>{{ 0.25 | currency:'GBP' }}</p>
+<P>{{ 0.25 | currency:'EUR':'code' }}</P>
+<h3>date format:</h3>
+<p>{{ date | date }}</p>
+<p>{{ date | date:'shortDate' }}</p>
+<p>{{ date | date:'shortTime' }}</p>
+<h3>decimal format:</h3>
+<p>{{ 5.234 | number:'1.2-3' }}</p>
+<p>{{ 5.234 | number:'3.4-5' }}</p>
+<p>{{ 5.234 | number:'1.1-2' }}</p>
+</p-accordionTab>
+</p-accordion>
+</div>
+<div class=ui-g-4>
+        <p-accordion>
+                <p-accordionTab header="parameterized and chaining Pipes" [selected]="true">
+<h2>parameterized pipe</h2>
+<p>{{ message | slice:1:5 }}</p>
+<p>The hero's birthday is {{ birthday | date:format }} </p>
+<button (click)="toggleFormat()">Toggle Format</button>
+<h2>chaining pipe</h2>
+<p>{{ message | uppercase | slice:1:3 }}</p>
+<p>{{ birthday |date:'fullDate' | uppercase }}</p>
+</p-accordionTab>
+</p-accordion>
+</div>
+<div class=ui-g-4> 
+        <p-accordion>
+                <p-accordionTab header="Custom pipes" [selected]="true">
+    <h3>Custom pipe</h3>
+    <p>sqrt root of 25 is: {{ 25 | sqrt }}</p>
+    <p>sqrt root of 625 is: {{ 625 | sqrt }}</p>
+</p-accordionTab>
+</p-accordion>
+    </div>
+</div>

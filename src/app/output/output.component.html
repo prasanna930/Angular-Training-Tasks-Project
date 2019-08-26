@@ -1,0 +1,6 @@
+<h2>{{msg}}</h2>
+<app-child2 (msgEvent)="receiveMessage($event)"></app-child2>
+
+<h3>you selected department with id={{departmentId}}</h3>
+<a (click)="goPrevious()">previous</a>
+<a (click)="goNext()">Next</a>

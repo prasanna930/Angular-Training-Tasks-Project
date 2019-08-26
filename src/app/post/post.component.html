@@ -1,0 +1,32 @@
+<div class="ui-g">
+    <div class="ui-g-1"></div>
+    <div class="ui-g-10">
+        <form #myform="ngForm">
+            <div class="ui-g">
+                <div class="ui-g-2"><b>name : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" [(ngModel)]="name" name="name" pInputText placeholder="Enter employeename">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-2"><b>salary : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" [(ngModel)]="salary" name="salary" pInputText placeholder="Enter employeesalary">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-2"><b>age : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" [(ngModel)]="age" name="age" pInputText placeholder="Enter employeeage">
+                    </div>
+                </div>
+            </div>
+            <button pButton type="button" label="AddEmployee" (click)="addEmployee(myform)" ></button>
+            <p-toast></p-toast>
+        </form>
+        

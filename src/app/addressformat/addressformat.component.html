@@ -1,0 +1,32 @@
+<h2>
+    {{ title }}
+</h2>
+<p-table [value]="data2">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Address Type</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>Address Line 3</th>
+            <th>Address Line 4</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Country</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+        <tr *ngFor="let getdata of data.deliveryAddresses">
+            <td>{{getdata.addressType}}</td>
+            <td>{{getdata.addressLineOne}}</td>
+            <td>{{getdata.addressLineTwo}}</td>
+            <td>{{getdata.addressLineThree}}</td>
+            <td>{{getdata.addressLineFour}}</td>
+            <td>{{getdata.city}}</td>
+            <td>{{getdata.state}}</td>
+            <td>{{getdata.zipCode}}</td>
+            <td>{{getdata.country}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<!-- <button pButton type="button" label="push data to delivery address" (click)="samplePushMethod()"></button> -->

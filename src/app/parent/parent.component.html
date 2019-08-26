@@ -1,0 +1,9 @@
+
+<button (click)="change()">change</button>
+<app-child1 ></app-child1>
+
+<h3>Department List</h3>
+
+    <div (click)=onSelect(department) *ngFor="let department of students">
+        <button> {{department.id}}</button>{{department.name}}
+    </div>

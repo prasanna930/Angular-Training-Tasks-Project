@@ -1,0 +1,50 @@
+<!-- <h2>{{title}}</h2>
+<pre>{{data1 | json}}</pre>
+<pre>{{data2 | json}}</pre> -->
+<form [formGroup]="addemployeeform">
+    <div class="ui-g">
+        <div class="ui-g-2"><b>ID : </b></div>
+        <div class="ui-g-10">
+            <input type="text" formControlName="id" pInputText placeholder="Enter employeeID">
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-2"><b>Name : </b></div>
+        <div class="ui-g-10">
+            <input type="text" formControlName="name" pInputText placeholder="Enter employeename">
+        </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-2"><b>Gender : </b></div>
+        <div class="ui-g-10">
+            <input type="text" formControlName="gender" pInputText placeholder="Enter employeegender">
+        </div>
+    </div>
+    <button pButton type="button" label="AddEmployee" (click)="addEmployee(addemployeeform.value)"></button>&nbsp;
+    <button pButton type="button" label="updateEmployee" (click)="updateEmployee(addemployeeform.value)"></button>
+</form>
+<br><br>
+<p-table [value]="data2">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-emp>
+        <tr>
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.gender}}</td>
+            <td>
+
+                <button pButton type="button" label="Delete" class="ui-button-danger"
+                    (click)="deleteemployee(emp.id)"></button>&nbsp;
+                <button pButton type="button" label="Edit" (click)="getData(emp)"></button>
+
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

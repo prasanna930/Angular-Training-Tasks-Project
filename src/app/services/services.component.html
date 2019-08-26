@@ -1,0 +1,32 @@
+
+
+<p-table [value]="data1" [paginator]="true" [rows]=10 [totalRecords]="totalRecords" [rowsPerPageOptions]=[10,20,30]>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>EmployeeId</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-emp>
+        <tr>
+            <td>{{emp.id}}</td>
+            <td>{{emp.employee_name}}</td>
+            <td>{{emp.employee_salary}}</td>
+            <td>{{emp.employee_age}}</td>
+            <td>
+                <button pButton type="button" label="Edit" (click)="editUser(emp.id)" class="ui-button-success"></button>&nbsp;
+                <button pButton type="button" label="Delete" class="ui-button-danger"
+                    (click)="deleteemployee(emp.id)"></button>&nbsp;
+                    <p-toast></p-toast>
+                    <button pButton type="button" label="create" routerLink='/post' class="ui-button-success"></button>  
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+    
+  

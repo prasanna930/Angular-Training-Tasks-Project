@@ -1,0 +1,209 @@
+<h1 >Employee Details Form</h1>
+
+<form [formGroup]="CompDetails" (ngSubmit)="OnSubmit()">
+
+    <div class="ui-g-12">
+        <div class="ui-g-6">
+            <h3>Firstname:</h3>
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" formControlName="Firstname"
+                    placeholder="Please Enter Firstname" pInputText>
+                <span class="errormessage"
+                    *ngIf=" CompDetails.get('Firstname').touched &&  CompDetails.get('Firstname').dirty &&  CompDetails.get('Firstname').errors">
+                    <span *ngIf="CompDetails.get('Firstname').errors.required ">FirstName is required </span>
+                    <span
+                        *ngIf="CompDetails.get('Firstname').errors.minlength || CompDetails.get('Firstname').errors.maxlength">
+                        Firstname must be minlength 3 characters and maxlength 20 characters
+                    </span>
+                   
+                </span>
+            </span>
+        </div>
+
+        
+        <div class="ui-g-6">
+            <h3>Lastname:</h3>
+            <input type="text" formControlName="Lastname" size="30" pInputText pTooltip="Enter your Lastname"
+                tooltipPosition="bottom" placeholder="Please Enter Lastname">
+        </div>
+        <br>
+        <br>
+        <div class="ui-g-6">
+            <h3>DateOfBirth:</h3>
+            <p-calendar formControlName="dateofbirth" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="ui-g-6">
+            <h3>EmployeeId:</h3>
+            <input type="text" formControlName="employeeid" size="30" pInputText pTooltip="Enter your employeeid"
+                tooltipPosition="bottom" placeholder="Please Enter employeeid">
+        </div>
+        <div class="ui-g-12">
+            <div formGroupName="details">
+
+                <div class="ui-g-6">
+                    <h3>UserName</h3>
+                    <div class="ui-g ui-fluid">
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" formControlName="Username" size=25% pInputText placeholder="Username">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-6">
+                    <h3>Password</h3>
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" formControlName="password" pInputText placeholder="password" size=25%>
+                        <span class="passerror"
+                            *ngIf="CompDetails.get('details.password').touched && CompDetails.get('details.password').invalid && CompDetails.get('details.password').errors.required">Password
+                            field is required</span>
+                        <span class="passerror"
+                            *ngIf="CompDetails.get('details.password').touched && CompDetails.get('details.password').invalid && CompDetails.get('details.password').errors.pattern">password
+                            should be one uppercase,one lowercase,one digit and one specialcharacter </span>
+                            
+                    </div>
+                </div>
+
+                <div class="ui-g-6">
+                    <h3>Conform Password</h3>
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" formControlName="confirmpassword" size=25% pInputText
+                            placeholder="confirmpassword">
+                        <span class="conpasserror" *ngIf="CompDetails.errors?.misMatch">password & confirm password
+                            should be same </span>
+
+                    </div>
+                </div>
+
+                <div class="ui-g-6">
+                    <h3>Email</h3>
+                    <div class="ui-inputgroup">
+                        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" formControlName="email" pInputText placeholder="Email" size=25%>
+                        <span class="Emailerror"
+                            *ngIf="CompDetails.get('details.email').touched && CompDetails.get('details.email').invalid && CompDetails.get('details.email').errors.required">Email
+                            field is required</span>
+                        <span class="Emailerror"
+                            *ngIf="CompDetails.get('details.email').touched && CompDetails.get('details.email').invalid && CompDetails.get('details.email').errors.emailDomain">Email
+                            Domain should be @miracle.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-g-6">
+            <h3>Gender</h3>
+            <p-radioButton name="group1" formControlName="Gender" value="Female" label="Female" inputId="Female">
+            </p-radioButton>&nbsp;
+            <p-radioButton name="group1" formControlName="Gender" value="Male" label="Male" inputId="Male">
+            </p-radioButton>
+        </div>
+
+        <div class="ui-g-6">
+            <h3 class="first">Languages Known:</h3>
+            <p-checkbox name="group1" value="Telugu" label="Telugu" formControlName="languages" inputId="te">
+            </p-checkbox>&nbsp;
+            <p-checkbox name="group1" value="English" label="English" formControlName="languages" inputId="en">
+            </p-checkbox>&nbsp;
+            <p-checkbox name="group1" value="Hindi" label="Hindi" formControlName="languages" inputId="hi">
+            </p-checkbox>
+        </div>
+        <div class="ui-g-6">
+            <h3>State</h3>
+            <p-dropdown [options]="states" formControlName="State" size="30" editable="true"
+                placeholder="Select a State">
+            </p-dropdown>
+        </div>
+
+        <div class="ui-g-6">
+            <h3>Skills</h3>
+            <span class="ui-fluid">
+                <p-autoComplete [suggestions]="filteredSkillsMultiple" (completeMethod)="filterSkillsMultiple($event)"
+                    styleClass="wid100" [minLength]="1" formControlName="Skills" size=15% placeholder="Skills"
+                    field="name" [multiple]="true">
+                </p-autoComplete>
+            </span>
+            <!-- <ul>
+                <li *ngFor="let c of countries">{{c.name}}</li>
+            </ul> -->
+        </div>
+        <div class="ui-g-6">
+            <h3>salary</h3>
+            <input type="text" pInputText pKeyFilter="int">
+        </div>
+
+        <div class="ui-g-6">
+            <h3>Contact Numbers:</h3>
+            <p-chips formControlName='contactNumbers'></p-chips>
+        </div>
+
+        <div class="ui-g-6">
+            <h3>Address:</h3>
+            <textarea rows="5" cols="30" size="30" formControlName="address" pInputTextarea
+                autoResize="autoResize"></textarea>
+        </div>
+
+
+
+        <div class="ui-g-6">
+            <h3 class="first">Company Rating {{val}}</h3>
+            <p-rating formControlName="comrat"></p-rating>
+        </div>
+    </div>
+    <br>
+    <button pButton type="button" label="Add" (click)=add()></button>&nbsp;
+    <button pButton type="button" label="reset" (click)=reset()></button>&nbsp;
+    <button pButton type="button" label="addTable" (click)=addTable()></button>
+</form>
+
+
+<div>
+    <p *ngIf="showJsonData">{{ CompDetails.value | json }}</p>
+</div>
+
+<h3 class="first">Table</h3>
+<p-table [value]="fields">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>DateOfBirth</th>
+            <th>EmployeeID</th>
+            <th>username</th>
+            <th>password</th>
+            <th>confirm password</th>
+            <th>email</th>
+            <th>Gender</th>
+            <th>State</th>
+            <th>Skills</th>
+            <th>Languages Known</th>
+            <th>Address</th>
+            <th>contact Numbers</th>
+            <th>CompRating</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-field>
+        <tr>
+            <td>{{field.Firstname}}</td>
+            <td>{{field.Lastname}}</td>
+            <td>{{field.dateofbirth}}</td>
+            <td>{{field.employeeid}}</td>
+            <td>{{field.details.Username}}</td>
+            <td>{{field.details.password}}</td>
+            <td>{{field.details.confirmpassword}}</td>
+            <td>{{field.details.email}}</td>
+            <td>{{field.Gender}}</td>
+            <td>{{field.State}}</td>
+            <td>
+                <span *ngFor="let Skill of field.Skills">{{Skill.name}} </span>
+            </td>
+            <td>{{field.languages}}</td>
+            <td>{{field.address}}</td>
+            <td>{{field.contactNumbers}}</td>
+            <td>{{field.comrat}}</td>
+
+        </tr>
+    </ng-template>
+</p-table>

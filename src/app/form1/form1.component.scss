@@ -1,0 +1,21 @@
+.errormessage{
+    color: red;         
+}
+
+.Emailerror{
+    color: red;
+
+}
+.passerror{
+ color: red;
+}
+.conpasserror{
+    color: red;
+}
+
+::ng-deep .ui-fluid .ui-inputtext {
+    width: 31%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}

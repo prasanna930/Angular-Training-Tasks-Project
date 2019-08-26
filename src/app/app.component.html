@@ -1,0 +1,43 @@
+<!-- <div>
+<div class="ui-md-12 ui-sm-12  ui-lg-12 ">
+  <mat-toolbar color="primary" class="navbar">
+  <button mat-raised-button color="primary" (click)="sidenav.toggle()">
+  <mat-icon>view_headline</mat-icon>
+     </button>
+  <div> Welcome to MIracle</div>
+  <div>
+   <span>Home</span>
+   <span>Contacts</span>
+   <span>AboutUs</span>
+  </div>
+  </mat-toolbar>
+  </div>
+  </div>
+  <mat-sidenav-container>
+   <mat-sidenav #sidenav mode="side" [(opened)]="opp">
+   <mat-action-list>
+  <mat-list-item routerLink="/home"> Home </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item> Routing </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item> Built-in Directives </mat-list-item>
+  <mat-divider></mat-divider>
+  </mat-action-list>
+   </mat-sidenav>
+   <mat-sidenav-content>
+   <router-outlet></router-outlet>
+   </mat-sidenav-content>
+  </mat-sidenav-container>
+   -->
+
+   <!-- <app-form1></app-form1> -->
+   <!-- <app-templatedrivenform></app-templatedrivenform> -->
+ 
+   <div>
+   <app-toolbar></app-toolbar>
+   <div>
+   <router-outlet></router-outlet>
+   </div>
+   </div>
+
+

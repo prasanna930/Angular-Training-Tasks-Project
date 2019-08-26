@@ -1,0 +1,39 @@
+<form [formGroup]="empDetails">
+    <div class="ui-g">
+        <div class="ui-g-2"><b>Id : </b></div>
+        <div class="ui-inputgroup">
+            <input type="text" formControlName="id" pInputText placeholder="Enter employeename">
+        </div>
+    </div>
+    <br>
+    <div class="ui-g">
+        <div class="ui-g-2"><b>Name :</b></div>
+        <div class="ui-inputgroup">
+            <input type="text" formControlName="name" pInputText placeholder="Enter employeesalary">
+        </div>
+    </div>
+    <br><br>
+    <button pButton type="button" label="addListItem" (click)="addListItem()"></button>&nbsp;
+    <button pButton type="button" label="DeleteListItem" (click)="DeleteListItem()"></button>
+
+    <div formArrayName="address">
+        <div *ngFor="let list_item of empDetails.get('address').value; let i=index">
+            {{i + 1}}
+
+            <div [formGroupName]="i" class="ui-g">
+
+                <div class="ui-g-3"><b>State : </b> <input type="text" formControlName="state" pInputText
+                        placeholder="Enter state"></div>
+
+                <div class="ui-g-3"><b>City : </b> <input type="text" formControlName="city" pInputText
+                        placeholder="Enter city"></div>
+
+                <div class="ui-g-3"><b>Zipcode : </b> <input type="text" formControlName="zipcode" pInputText
+                        placeholder="Enter zipcode"></div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<h3>{{envName}}</h3>

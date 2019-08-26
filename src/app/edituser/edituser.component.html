@@ -1,0 +1,31 @@
+<div class="ui-g">
+    <div class="ui-g-1"></div>
+    <div class="ui-g-10">
+        <form [formGroup]="editform" >
+            <div class="ui-g">
+                <div class="ui-g-2"><b>name : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" formControlName="name" pInputText placeholder="Enter employeename">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-2"><b>salary : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" formControlName="salary" pInputText placeholder="Enter employeesalary">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-2"><b>age : </b></div>
+                <div class="ui-g-10">
+                    <div class="ui-inputgroup">
+                        <input type="text" formControlName="age" pInputText placeholder="Enter employeeage">
+                    </div>
+                </div>
+            </div>
+            <button pButton type="button" label="updateuser" (click)="updateUser()" routerLink='/services'></button>
+        </form>
+        
